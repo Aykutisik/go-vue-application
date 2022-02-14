@@ -6,7 +6,7 @@
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint",
-        "test": "./node_modules/.bin/cucumber-js ./src"
+        "test": "./node_modules/.bin/cucumber-js ./src --require ./src/steps/todo.js"
     },
     "dependencies": {
         "@cucumber/cucumber": "^7.3.2",
