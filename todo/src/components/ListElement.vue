@@ -1,14 +1,30 @@
 <template>
   <div class="background-todoElement">
-      <label class="todoElement">aykut </label>
-      <button class="btn" style=" background: rgb(119, 6, 6);">Delete</button>
+      <!-- <label class="todoElement">aykut </label>
+     -->
+
+     <div class="flex bg-grey-light w-full h-auto p-2 mt-4 rounded-lg gap-x-5" >
+<h3 class="w-5/6 font-sans font-light text-2xl text-center bg-white pt-1 shadow-md rounded-lg">{{name}}</h3>
+
+ <button @click="deleteTodo()" class="btn" style=" background: rgb(119, 6, 6);">Delete</button> 
+
+
+      </div>
+        
   </div>
 </template>
 
 <script>
 export default {
   name: "",
-  props: {},
+  props: {
+    name: String
+  },
+  methods: {
+    deleteTodo(){
+      console.log("dsadasds")
+    }
+  }
 };
 </script>
 
@@ -27,7 +43,7 @@ export default {
 }
 
 .background-todoElement{
-  border: inset 1px rgb(24, 83, 212);
+  
   margin:2%
 }
 
