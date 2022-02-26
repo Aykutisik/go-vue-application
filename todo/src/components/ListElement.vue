@@ -1,32 +1,59 @@
 <template>
   <div class="background-todoElement">
-      <!-- <label class="todoElement">aykut </label>
+    <!-- <label class="todoElement">aykut </label>
      -->
 
-     <div class="flex bg-grey-light w-full h-auto p-2 mt-4 rounded-lg gap-x-5" >
-<h3 class="w-5/6 font-sans font-light text-2xl text-center bg-white pt-1 shadow-md rounded-lg">{{text}}</h3>
+    <div class="flex bg-grey-light w-full h-auto p-2 mt-4 rounded-lg gap-x-5">
+      <h3
+        v-if="todo.status == 1"
+        class="w-5/6 font-sans font-light text-2xl text-center bg-white pt-1 shadow-md rounded-lg line-through"
+      >
+        {{ todo.text }}
+      </h3>
 
- <button @click="deleteTodo()" class="btn" style=" background: rgb(119, 6, 6);">Done</button> 
+      <h3
+        v-else
+        class="w-5/6 font-sans font-light text-2xl text-center bg-white pt-1 shadow-md rounded-lg"
+      >
+        {{ todo.text }}
+      </h3>
 
-
-      </div>
-        
+      <button
+        @click="DeleteTodo(todo)"
+        class="btn"
+        style="background: rgb(119, 6, 6)"
+      >
+        Delete
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   text: "",
-  // props: {
-  //   name: String
-  // },
-  props: ['text'],
- 
+  props: {
+    todo: Object,
+  },
+  // props: ['text'],
+
   methods: {
-    deleteTodo(){
-      console.log("dsadasds")
-    }
-  }
+    DeleteTodo(todo) {
+      let url = "http://127.0.0.1:8086/DeleteTodo/" + todo._id;
+      console.log(url);
+
+      axios
+        .post(url)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch((error) => console.log(error));
+
+      this.textInput = "";
+      location.reload();
+    },
+  },
 };
 </script>
 
@@ -44,18 +71,18 @@ export default {
   overflow: hidden;
 }
 
-.background-todoElement{
-  
-  margin:2%
+.background-todoElement {
+  margin: 2%;
 }
 
-.btn{
+.btn {
   border: 0;
   border-radius: 12px;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   display: inline-block;
-  font-family: -apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
   float: right;
   font-size: 16px;
   font-weight: 500;
@@ -64,7 +91,7 @@ export default {
   padding: 0 1rem;
   text-align: center;
   text-decoration: none;
-  transition: box-shadow .2s ease-in-out;
+  transition: box-shadow 0.2s ease-in-out;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
@@ -72,14 +99,14 @@ export default {
 }
 
 .button-62:not([disabled]):focus {
-  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
+    -0.125rem -0.125rem 1rem rgba(239, 71, 101, 0.5),
+    0.125rem 0.125rem 1rem rgba(255, 154, 90, 0.5);
 }
 
 .button-62:not([disabled]):hover {
-  box-shadow: 0 0 .25rem rgba(0, 0, 0, 0.5), -.125rem -.125rem 1rem rgba(239, 71, 101, 0.5), .125rem .125rem 1rem rgba(255, 154, 90, 0.5);
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.5),
+    -0.125rem -0.125rem 1rem rgba(239, 71, 101, 0.5),
+    0.125rem 0.125rem 1rem rgba(255, 154, 90, 0.5);
 }
-
-
-
-
 </style>
