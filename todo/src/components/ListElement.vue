@@ -4,9 +4,9 @@
      -->
 
      <div class="flex bg-grey-light w-full h-auto p-2 mt-4 rounded-lg gap-x-5" >
-<h3 class="w-5/6 font-sans font-light text-2xl text-center bg-white pt-1 shadow-md rounded-lg">{{name}}</h3>
+<h3 class="w-5/6 font-sans font-light text-2xl text-center bg-white pt-1 shadow-md rounded-lg">{{text}}</h3>
 
- <button @click="deleteTodo()" class="btn" style=" background: rgb(119, 6, 6);">Delete</button> 
+ <button @click="deleteTodo()" class="btn" style=" background: rgb(119, 6, 6);">Done</button> 
 
 
       </div>
@@ -16,10 +16,12 @@
 
 <script>
 export default {
-  name: "",
-  props: {
-    name: String
-  },
+  text: "",
+  // props: {
+  //   name: String
+  // },
+  props: ['text'],
+ 
   methods: {
     deleteTodo(){
       console.log("dsadasds")

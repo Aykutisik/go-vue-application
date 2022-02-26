@@ -10,11 +10,11 @@
    <!-- <input style="border: solid;"  type="text" id="textInput" placeholder="Todo Add" v-model="textInput" @keydown.enter="todoList.push($event.target.value)" />
   <button style="background-color:red" @click="otherfunc" >Ekle</button> -->
   <div class="list-background " style="border: inset  #ee7752, #e73c7e, #23a6d5, #23d5ab ; height: 1000px;">
-    <ul>
-      <li v-for="todo in todoArray" :key="todo._id" >
-          <ListElement :name="todo.text" />
-      </li>
-    </ul>
+    <!-- <ul>
+      <li v-for="todo in todoArray" :key="todo._id" > -->
+          <ListElement :text="todo.text" v-for="todo in todoArray" :key="todo._id"/>
+      <!-- </li>
+    </ul> -->
     
    
 
@@ -26,7 +26,7 @@
 import axios from 'axios'
 import ListElement from './ListElement.vue'
 export default {
-  name: 'Mainpage',
+  text: 'Mainpage',
   components: {
       ListElement
   },
@@ -49,7 +49,7 @@ export default {
     
   },
   computed : {
-
+    
   },
   methods: {
            
@@ -69,7 +69,9 @@ export default {
             console.log(response);
         })
         .catch(error => console.log(error))
-        
+        location.reload();
+       
+        this.textInput = ""
         
 
         
