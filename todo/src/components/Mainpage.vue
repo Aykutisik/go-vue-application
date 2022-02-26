@@ -11,8 +11,8 @@
   <button style="background-color:red" @click="otherfunc" >Ekle</button> -->
   <div class="list-background " style="border: inset  #ee7752, #e73c7e, #23a6d5, #23d5ab ; height: 1000px;">
     <ul>
-      <li v-for="todo in todoArray" :key="todo" >
-          <ListElement :name="todo" />
+      <li v-for="todo in todoArray" :key="todo._id" >
+          <ListElement :name="todo.text" />
       </li>
     </ul>
     
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-
+import axios from 'axios'
 import ListElement from './ListElement.vue'
 export default {
   name: 'Mainpage',
@@ -33,14 +33,59 @@ export default {
   data(){
     return {
       textInput: "",
-      todoArray: ["furkan","aykut","blabla"]
+      todoArray: []
+      
     }
 
   },
+    mounted() {
+
+        
+      console.log("mounted")
+      this.FetchItems();
+        
+
+        
+    
+  },
+  computed : {
+
+  },
   methods: {
+           
       addTodo(){
-        this.todoArray.push(this.textInput)
-      }
+        let data = {
+           
+            text: this.textInput,
+            status: 0
+
+
+
+             }
+        //this.todoArray.push(this.textInput)
+        axios
+        .post('http://127.0.0.1:8086/CreateTodo',data)
+        .then(function (response ){
+            console.log(response);
+        })
+        .catch(error => console.log(error))
+        
+        
+
+        
+      },
+      FetchItems(){
+        
+            axios
+        .get('http://127.0.0.1:8086/GetTodoElements')
+        .then(response => (this.todoArray = response.data
+         
+        ))
+        .catch(error => console.log(error))
+
+         console.log(this.todoArray )
+   
+    },
   }
 }
 </script>
