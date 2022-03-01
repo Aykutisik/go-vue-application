@@ -21,7 +21,7 @@
     >
       <!-- <ul>
       <li v-for="todo in todoArray" :key="todo._id" > -->
-      <ListElement :todo="todo" v-for="todo in todoArray" :key="todo._id" />
+      <ListElement @click.native="UpdateTodo(todo)"  :todo="todo" v-for="todo in todoArray" :key="todo._id" />
       <!-- </li>
     </ul> -->
     </div>
@@ -48,7 +48,23 @@ export default {
   },
 
   methods: {
-
+    UpdateTodo(todo){
+      
+      let data = {
+        _id: todo._id,
+        text: todo.textInput,
+        status: todo.status ? 0 : 1,
+      };
+      console.log(data)
+      axios
+        .post("http://127.0.0.1:8086/UpdateTodo", data)
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch((error) => console.log(error));
+      
+      //location.reload();
+    },
     AddTodo() {
       let data = {
         text: this.textInput,
