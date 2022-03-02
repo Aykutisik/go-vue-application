@@ -3,13 +3,14 @@
     <div class="flex place-items-center border-b border-teal-500 py-2">
       <input
         v-model="textInput"
+        id ="input"
         class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
         type="text"
         placeholder="Furkan Kücük"
         aria-label="Full name"
       />
 
-      <button @click="AddTodo" class="btn" style="background: rgb(1, 101, 35)">
+      <button @click="AddTodo" class="btn" id="buttonAdd" style="background: rgb(1, 101, 35)">
         Add
       </button>
     </div>
