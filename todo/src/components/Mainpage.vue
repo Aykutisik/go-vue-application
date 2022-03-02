@@ -13,6 +13,7 @@
         Add
       </button>
     </div>
+    
     <!-- <input style="border: solid;"  type="text" id="textInput" placeholder="Todo Add" v-model="textInput" @keydown.enter="todoList.push($event.target.value)" />
   <button style="background-color:red" @click="otherfunc" >Ekle</button> -->
     <div
@@ -21,7 +22,7 @@
     >
       <!-- <ul>
       <li v-for="todo in todoArray" :key="todo._id" > -->
-      <ListElement @click.native="UpdateTodo(todo)"  :todo="todo" v-for="todo in todoArray" :key="todo._id" />
+      <ListElement   @click.native="UpdateTodo(todo)"  :todo="todo" v-for="todo in todoArray" :key="todo._id" />
       <!-- </li>
     </ul> -->
     </div>
@@ -63,7 +64,7 @@ export default {
         })
         .catch((error) => console.log(error));
       
-      //location.reload();
+      location.reload();
     },
     AddTodo() {
       let data = {
