@@ -26,25 +26,35 @@ describe('tests of ListElement component ', () => {
             propsData: { todo }
         });
 
-        const DeleteTodo = jest.fn();
+        const Deletetodobutton = jest.fn();
         wrapper.setMethods({
-            DeleteTodo: DeleteTodo
+            DeleteTodo: Deletetodobutton
         })
         wrapper.find('button').trigger('click')
 
-        expect(DeleteTodo).toHaveBeenCalled();
+        expect(Deletetodobutton).toHaveBeenCalled();
     });
 
-    it('callsss DeleteTodo method when Delete button is clicked', () => {
+    it('Check item is seen as line through', () => {
         const todo = { text: "todo1", status: 1 }
-        const wrapper = mount(ListElement, {
+        const wrapper = shallowMount(ListElement, {
             propsData: { todo }
         });
 
+        expect(wrapper.find("#line-through-true").exists()).toBeTruthy()
 
-        expect(wrapper.contains("line-through")).toBe(true)
 
-        //expect(wrapper.classes()).toContain()
+    });
+
+    it('Check item is seen as line through', () => {
+        const todo = { text: "todo1", status: 0 }
+        const wrapper = shallowMount(ListElement, {
+            propsData: { todo }
+        });
+
+        expect(wrapper.find("#line-through-false").exists()).toBeTruthy()
+
+
     });
 
 

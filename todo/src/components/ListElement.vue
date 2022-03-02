@@ -6,14 +6,14 @@
     <div class="flex bg-grey-light w-full h-auto p-2 mt-4 rounded-lg gap-x-5">
       <a href="#"
         v-if="todo.status == 1"
-        id="line-through" class="w-5/6 font-sans font-light text-2xl text-center bg-white pt-1 shadow-md rounded-lg line-through"
+        id="line-through-true" class="w-5/6 font-sans font-light text-2xl text-center bg-white pt-1 shadow-md rounded-lg line-through"
       >
         {{ todo.text }}
       </a>
 
       <a href="#"
         v-else
-        class="w-5/6 font-sans font-light text-2xl text-center bg-white pt-1 shadow-md rounded-lg"
+        id="line-through-false" class="w-5/6 font-sans font-light text-2xl text-center bg-white pt-1 shadow-md rounded-lg"
       >
         {{ todo.text }}
       </a>
