@@ -1,5 +1,9 @@
+
 import { shallowMount, mount } from '@vue/test-utils'
 import Mainpage from '@/components/Mainpage.vue'
+import flushPromises from 'flush-promises';
+import "regenerator-runtime";
+
 
 
 describe('Adding a new todo test ', () => {
@@ -9,24 +13,25 @@ describe('Adding a new todo test ', () => {
         expect(wrapper.isVueInstance).toBeTruthy();
     });
 
-    it('Is has an input for writing new todo', () => {
+    it('Is has an input for writing new todo', async() => {
         const wrapper = shallowMount(Mainpage)
         expect(wrapper.find("#inputPlace").exists()).toBeTruthy()
     });
 
-    it('Is has a button for adding new todo', () => {
+    it('Is has a button for adding new todo', async() => {
         const wrapper = shallowMount(Mainpage)
         expect(wrapper.find("#buttonAdd").exists()).toBeTruthy()
     });
 
-    it('add new todo item', ()  => {
+    it('add new todo item', async () => {
         const wrapper = shallowMount(Mainpage)
         const inputText = "buy some milk";
         const textInput = wrapper.find("#inputPlace");
-        textInput.setValue(inputText);
+        await textInput.setValue(inputText);
         expect(textInput.element.value).toEqual(inputText);
+        await flushPromises;
 
-      
+
         const AddButton = jest.fn();
         wrapper.setMethods({
             AddTodo: AddButton
@@ -35,9 +40,11 @@ describe('Adding a new todo test ', () => {
 
         expect(AddButton).toHaveBeenCalled();
 
+
+
     });
 
-}) 
+})
 
 
 
