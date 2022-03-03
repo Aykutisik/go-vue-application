@@ -19,6 +19,7 @@
   <button style="background-color:red" @click="otherfunc" >Ekle</button> -->
     <div
       class="list-background"
+      
       style="border: inset #ee7752, #e73c7e, #23a6d5, #23d5ab; height: 1000px"
     >
       <!-- <ul>
@@ -65,9 +66,10 @@ export default {
         })
         .catch((error) => console.log(error));
       
-      location.reload();
+      //location.reload();
     },
     AddTodo() {
+      console.log("Add")
       let data = {
         text: this.textInput,
         status: 0,

@@ -1,5 +1,5 @@
 <template>
-  <div class="background-todoElement">
+  <div id="listelement" class="background-todoElement">
     <!-- <label class="todoElement">aykut </label>
      -->
 
@@ -20,6 +20,7 @@
 
       <button
         @click="DeleteTodo(todo)"
+        id = "deletebtn"
         class="btn"
         style="background: rgb(119, 6, 6)"
       >
@@ -51,7 +52,7 @@ export default {
         .catch((error) => console.log(error));
 
       this.textInput = "";
-      location.reload();
+    //  location.reload();
     },
   },
 };
