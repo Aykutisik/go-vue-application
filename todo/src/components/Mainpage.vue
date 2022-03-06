@@ -66,7 +66,7 @@ export default {
         })
         .catch((error) => console.log(error));
       
-      //location.reload();
+      location.reload();
     },
     AddTodo() {
       console.log("Add")
