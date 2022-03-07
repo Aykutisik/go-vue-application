@@ -46,7 +46,7 @@ export default {
     };
   },
   mounted() {
-    console.log("mounted");
+    
     this.GetTodoElements();
   },
 
@@ -92,7 +92,7 @@ export default {
         .get("http://127.0.0.1:8086/GetTodoElements")
         .then((response) => (this.todoArray = response.data))
         .catch((error) => console.log(error));
-      console.log("aykut");
+      
       
     },
   },

@@ -5,12 +5,14 @@
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
-        "test:unit": "vue-cli-service test:unit",
+        "test:unit": "vue-cli-service test:unit tests/unit",
         "lint": "vue-cli-service lint",
-        "test": "./node_modules/.bin/cucumber-js ./src --require ./src/steps/todo.js"
+        "test": "./node_modules/.bin/cucumber-js ./src --require ./src/steps/todo.js",
+        "test:consumer": "jest tests/contract"
     },
     "dependencies": {
         "@cucumber/cucumber": "^7.3.2",
+        "@pact-foundation/pact": "^9.17.2",
         "@tailwindcss/postcss7-compat": "^2.2.17",
         "autoprefixer": "^9.8.8",
         "bootstrap": "^5.1.3",
@@ -23,6 +25,8 @@
     "devDependencies": {
         "@babel/core": "^7.17.5",
         "@babel/preset-env": "^7.16.11",
+        "@pact-foundation/pact-node": "^10.17.1",
+        "@pact-foundation/pact-web": "^9.17.2",
         "@vue/cli-plugin-babel": "~4.5.0",
         "@vue/cli-plugin-eslint": "~4.5.0",
         "@vue/cli-plugin-unit-jest": "~4.5.15",
@@ -31,10 +35,15 @@
         "babel-core": "^7.0.0-bridge.0",
         "babel-eslint": "^10.1.0",
         "babel-jest": "^27.5.1",
+        "babel-loader": "^8.2.3",
+        "babel-polyfill": "^6.26.0",
+        "babel-preset-es2015": "^6.24.1",
+        "babel-preset-stage-0": "^6.24.1",
         "cucumber": "^7.0.0-rc.0",
         "eslint": "^6.7.2",
         "eslint-plugin-vue": "^6.2.2",
         "flush-promises": "^1.0.2",
+        "jest-pact": "^0.9.1",
         "regenerator-runtime": "^0.13.9",
         "vue-jest": "^3.0.7",
         "vue-template-compiler": "^2.6.11"
@@ -76,17 +85,15 @@
             "parser": "babel-eslint"
         },
         "rules": {},
-        "overrides": [
-            {
-                "files": [
-                    "**/__tests__/*.{j,t}s?(x)",
-                    "**/tests/unit/**/*.spec.{j,t}s?(x)"
-                ],
-                "env": {
-                    "jest": true
-                }
+        "overrides": [{
+            "files": [
+                "**/__tests__/*.{j,t}s?(x)",
+                "**/tests/unit/**/*.spec.{j,t}s?(x)"
+            ],
+            "env": {
+                "jest": true
             }
-        ]
+        }]
     },
     "browserslist": [
         "> 1%",
