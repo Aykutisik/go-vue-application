@@ -60,7 +60,7 @@ export default {
       };
       console.log(data)
       axios
-        .post("http://127.0.0.1:8086/UpdateTodo", data)
+        .put("http://127.0.0.1:8086/UpdateTodo", data)
         .then(function (response) {
           console.log(response);
         })

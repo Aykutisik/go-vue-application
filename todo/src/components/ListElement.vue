@@ -45,7 +45,7 @@ export default {
       console.log(url);
 
       axios
-        .post(url)
+        .put(url)
         .then(function (response) {
           console.log(response);
         })
