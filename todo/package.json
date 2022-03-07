@@ -8,7 +8,7 @@
         "test:unit": "vue-cli-service test:unit tests/unit",
         "lint": "vue-cli-service lint",
         "test": "./node_modules/.bin/cucumber-js ./src --require ./src/steps/todo.js",
-        "test:consumer": "jest tests/contract --runInBand"
+        "test:consumer": "jest tests/contract"
     },
     "dependencies": {
         "@cucumber/cucumber": "^7.3.2",
@@ -85,17 +85,15 @@
             "parser": "babel-eslint"
         },
         "rules": {},
-        "overrides": [
-            {
-                "files": [
-                    "**/__tests__/*.{j,t}s?(x)",
-                    "**/tests/unit/**/*.spec.{j,t}s?(x)"
-                ],
-                "env": {
-                    "jest": true
-                }
+        "overrides": [{
+            "files": [
+                "**/__tests__/*.{j,t}s?(x)",
+                "**/tests/unit/**/*.spec.{j,t}s?(x)"
+            ],
+            "env": {
+                "jest": true
             }
-        ]
+        }]
     },
     "browserslist": [
         "> 1%",

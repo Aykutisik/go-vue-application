@@ -7,8 +7,8 @@
   },
   "interactions": [
     {
-      "description": "a request for todos",
-      "providerState": "there are 2 todos",
+      "description": "request for geting todos",
+      "providerState": "there are already exists todos",
       "request": {
         "method": "GET",
         "path": "/GetTodoElements",
@@ -37,7 +37,7 @@
     },
     {
       "description": "create item request",
-      "providerState": "a todo item created",
+      "providerState": "a todo item is created",
       "request": {
         "method": "POST",
         "path": "/CreateTodo",
@@ -52,6 +52,46 @@
       },
       "response": {
         "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=UTF-8"
+        }
+      }
+    },
+    {
+      "description": "a request to update the todo item",
+      "providerState": "Update a todo item",
+      "request": {
+        "method": "PUT",
+        "path": "/UpdateTodo",
+        "headers": {
+          "Accept": "application/json; charset=utf-8",
+          "Content-Type": "application/json; charset=UTF-8"
+        },
+        "body": {
+          "_id": "62234346c2a65768f2c03ca5",
+          "status": 0,
+          "text": "drink water"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=UTF-8"
+        }
+      }
+    },
+    {
+      "description": "a request to delete the todo item",
+      "providerState": "delete a todo item",
+      "request": {
+        "method": "PUT",
+        "path": "/DeleteTodo/62234346c2a65768f2c03ca5",
+        "headers": {
+          "Accept": "application/json; charset=utf-8"
+        }
+      },
+      "response": {
+        "status": 200,
         "headers": {
           "Content-Type": "application/json; charset=UTF-8"
         }

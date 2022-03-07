@@ -1,5 +1,5 @@
 const { Pact } = require('@pact-foundation/pact')
-const { getTodos, createTodo, updateTodo } = require('../api');
+const { getTodos, createTodo, updateTodo, deleteTodo } = require('../api');
 
 import "babel-polyfill";
 
@@ -23,7 +23,7 @@ describe('Todo Api', () => {
     let addedTodo;
 
     describe('Get todo items', () => {
-        it("Should return all todo items", async () => {
+        it("Should return all todo items", async() => {
             const expectedResponse = [{ "_id": "62234346c2a65768f2c03ca5", "status": 0, "text": "drink water" }, { "_id": "6225bfaec2a65768f2c03ca6", "status": 0, "text": "bla bla" }]
 
             provider.addInteraction({
@@ -51,11 +51,10 @@ describe('Todo Api', () => {
     })
 
     describe("Create a todo", () => {
-        it('Should add an element to todo list', async () => {
-    
-            const requestBody =
-                {"status": 0, "text": "new todo element" }
-    
+        it('Should add an element to todo list', async() => {
+
+            const requestBody = { "status": 0, "text": "new todo element" }
+
             provider.addInteraction({
                 state: "a todo item is created",
                 uponReceiving: "create item request",
@@ -76,13 +75,14 @@ describe('Todo Api', () => {
                 }
             })
             let response = await createTodo(baseURL, requestBody);
+            //console.log(response);
             const myJSON = JSON.stringify(response.statusText);
-            expect(myJSON).toEqual( "\"Created \"");
+            expect(myJSON).toEqual("\"Created \"");
         })
     })
 
     describe("Update a todo item", () => {
-        const requestBody = {"_id": "62234346c2a65768f2c03ca5", "status": 0, "text": "drink water"}
+        const requestBody = { "_id": "62234346c2a65768f2c03ca5", "status": 0, "text": "drink water" }
 
         it("Should update the todo item", async() => {
             provider.addInteraction({
@@ -92,23 +92,62 @@ describe('Todo Api', () => {
                     method: 'PUT',
                     path: `/UpdateTodo`,
                     headers: {
-                    'Accept': 'application/json; charset=utf-8',
-                    'Content-Type': 'application/json; charset=UTF-8'
-                    }
+                        'Accept': 'application/json; charset=utf-8',
+                        'Content-Type': 'application/json; charset=UTF-8'
+                    },
+                    body: requestBody
                 },
                 willRespondWith: {
                     status: 200,
                     headers: {
                         'Content-Type': 'application/json; charset=UTF-8'
                     },
-                    body: expectedResponse
+
+
                 }
             })
-            const response = await updateTodo(baseURL, id);
-            //console.log(response.data);
-            expect(response.data).toEqual(expectedResponse);
+
+            const response = await updateTodo(baseURL, requestBody);
+
+
+            const myJSON = JSON.stringify(response.data);
+
+            expect(myJSON).toEqual('\"\"');
         })
     })
 
-})
+    describe("Delete a todo item", () => {
+        const id = "62234346c2a65768f2c03ca5"
 
+        it("Should delete the todo item", async() => {
+            provider.addInteraction({
+                state: 'delete a todo item',
+                uponReceiving: 'a request to delete the todo item',
+                withRequest: {
+                    method: 'PUT',
+                    path: `/DeleteTodo/${id}`,
+                    headers: { 'Accept': 'application/json; charset=utf-8' }
+
+                },
+                willRespondWith: {
+                    status: 200,
+                    headers: {
+                        'Content-Type': 'application/json; charset=UTF-8'
+                    },
+
+
+                }
+            })
+
+            const response = await deleteTodo(baseURL, id);
+
+
+            const myJSON = JSON.stringify(response.statusText);
+            console.log(response);
+            expect(myJSON).toEqual("\"OK \"");
+        })
+    })
+
+
+
+})

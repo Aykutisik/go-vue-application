@@ -1,11 +1,23 @@
-I, [2022-03-07T15:44:36.200016 #43617]  INFO -- : Registered expected interaction GET /GetTodoElements
-I, [2022-03-07T15:44:36.201508 #43617]  INFO -- : Received request GET /GetTodoElements
-I, [2022-03-07T15:44:36.201873 #43617]  INFO -- : Found matching response for GET /GetTodoElements
-I, [2022-03-07T15:44:36.229417 #43617]  INFO -- : Verifying - interactions matched
-I, [2022-03-07T15:44:36.232805 #43617]  INFO -- : Cleared interactions
-I, [2022-03-07T15:44:36.242425 #43617]  INFO -- : Registered expected interaction POST /CreateTodo
-I, [2022-03-07T15:44:36.243908 #43617]  INFO -- : Received request POST /CreateTodo
-I, [2022-03-07T15:44:36.244165 #43617]  INFO -- : Found matching response for POST /CreateTodo
-I, [2022-03-07T15:44:36.255125 #43617]  INFO -- : Verifying - interactions matched
-I, [2022-03-07T15:44:36.259042 #43617]  INFO -- : Cleared interactions
-I, [2022-03-07T15:44:36.262896 #43617]  INFO -- : Writing pact for todo-backend to /Users/furkan.kucuk/Desktop/go-vue-application/todo/pacts/todo-todo-backend.json
+I, [2022-03-07T17:22:46.564224 #78106]  INFO -- : Registered expected interaction GET /GetTodoElements
+I, [2022-03-07T17:22:46.565815 #78106]  INFO -- : Received request GET /GetTodoElements
+I, [2022-03-07T17:22:46.566214 #78106]  INFO -- : Found matching response for GET /GetTodoElements
+I, [2022-03-07T17:22:46.596239 #78106]  INFO -- : Verifying - interactions matched
+I, [2022-03-07T17:22:46.599608 #78106]  INFO -- : Cleared interactions
+I, [2022-03-07T17:22:46.609188 #78106]  INFO -- : Registered expected interaction POST /CreateTodo
+I, [2022-03-07T17:22:46.610733 #78106]  INFO -- : Received request POST /CreateTodo
+I, [2022-03-07T17:22:46.610993 #78106]  INFO -- : Found matching response for POST /CreateTodo
+I, [2022-03-07T17:22:46.615158 #78106]  INFO -- : Verifying - interactions matched
+I, [2022-03-07T17:22:46.618266 #78106]  INFO -- : Cleared interactions
+I, [2022-03-07T17:22:46.625132 #78106]  INFO -- : Received OPTIONS request for mock service administration endpoint PUT /UpdateTodo. Returning CORS headers: {"Access-Control-Allow-Origin"=>"http://localhost", "Access-Control-Allow-Headers"=>"*", "Access-Control-Allow-Methods"=>"DELETE, POST, GET, HEAD, PUT, TRACE, CONNECT, PATCH"}.
+I, [2022-03-07T17:22:46.626473 #78106]  INFO -- : Registered expected interaction PUT /UpdateTodo
+I, [2022-03-07T17:22:46.628471 #78106]  INFO -- : Received request PUT /UpdateTodo
+I, [2022-03-07T17:22:46.628693 #78106]  INFO -- : Found matching response for PUT /UpdateTodo
+I, [2022-03-07T17:22:46.632528 #78106]  INFO -- : Verifying - interactions matched
+I, [2022-03-07T17:22:46.635736 #78106]  INFO -- : Cleared interactions
+I, [2022-03-07T17:22:46.643281 #78106]  INFO -- : Registered expected interaction PUT /DeleteTodo/62234346c2a65768f2c03ca5
+I, [2022-03-07T17:22:46.643669 #78106]  INFO -- : Received OPTIONS request for mock service administration endpoint PUT /DeleteTodo/62234346c2a65768f2c03ca5. Returning CORS headers: {"Access-Control-Allow-Origin"=>"http://localhost", "Access-Control-Allow-Headers"=>"*", "Access-Control-Allow-Methods"=>"DELETE, POST, GET, HEAD, PUT, TRACE, CONNECT, PATCH"}.
+I, [2022-03-07T17:22:46.648450 #78106]  INFO -- : Received request PUT /DeleteTodo/62234346c2a65768f2c03ca5
+I, [2022-03-07T17:22:46.648660 #78106]  INFO -- : Found matching response for PUT /DeleteTodo/62234346c2a65768f2c03ca5
+I, [2022-03-07T17:22:46.660697 #78106]  INFO -- : Verifying - interactions matched
+I, [2022-03-07T17:22:46.664668 #78106]  INFO -- : Cleared interactions
+I, [2022-03-07T17:22:46.669023 #78106]  INFO -- : Writing pact for todo-backend to /Users/aykut.isik/Desktop/go-vue-application/todo/pacts/todo-todo-backend.json
