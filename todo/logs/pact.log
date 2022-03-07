@@ -1,0 +1,11 @@
+I, [2022-03-07T15:44:36.200016 #43617]  INFO -- : Registered expected interaction GET /GetTodoElements
+I, [2022-03-07T15:44:36.201508 #43617]  INFO -- : Received request GET /GetTodoElements
+I, [2022-03-07T15:44:36.201873 #43617]  INFO -- : Found matching response for GET /GetTodoElements
+I, [2022-03-07T15:44:36.229417 #43617]  INFO -- : Verifying - interactions matched
+I, [2022-03-07T15:44:36.232805 #43617]  INFO -- : Cleared interactions
+I, [2022-03-07T15:44:36.242425 #43617]  INFO -- : Registered expected interaction POST /CreateTodo
+I, [2022-03-07T15:44:36.243908 #43617]  INFO -- : Received request POST /CreateTodo
+I, [2022-03-07T15:44:36.244165 #43617]  INFO -- : Found matching response for POST /CreateTodo
+I, [2022-03-07T15:44:36.255125 #43617]  INFO -- : Verifying - interactions matched
+I, [2022-03-07T15:44:36.259042 #43617]  INFO -- : Cleared interactions
+I, [2022-03-07T15:44:36.262896 #43617]  INFO -- : Writing pact for todo-backend to /Users/furkan.kucuk/Desktop/go-vue-application/todo/pacts/todo-todo-backend.json

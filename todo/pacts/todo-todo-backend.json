@@ -1,0 +1,66 @@
+{
+  "consumer": {
+    "name": "todo"
+  },
+  "provider": {
+    "name": "todo-backend"
+  },
+  "interactions": [
+    {
+      "description": "a request for todos",
+      "providerState": "there are 2 todos",
+      "request": {
+        "method": "GET",
+        "path": "/GetTodoElements",
+        "headers": {
+          "Accept": "application/json; charset=utf-8"
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=UTF-8"
+        },
+        "body": [
+          {
+            "_id": "62234346c2a65768f2c03ca5",
+            "status": 0,
+            "text": "drink water"
+          },
+          {
+            "_id": "6225bfaec2a65768f2c03ca6",
+            "status": 0,
+            "text": "bla bla"
+          }
+        ]
+      }
+    },
+    {
+      "description": "create item request",
+      "providerState": "a todo item created",
+      "request": {
+        "method": "POST",
+        "path": "/CreateTodo",
+        "headers": {
+          "Accept": "application/json; charset=utf-8",
+          "Content-Type": "application/json; charset=UTF-8"
+        },
+        "body": {
+          "status": 0,
+          "text": "new todo element"
+        }
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "Content-Type": "application/json; charset=UTF-8"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}
