@@ -1,5 +1,5 @@
 const { Pact } = require('@pact-foundation/pact')
-const { getTodos, createTodo } = require('../api');
+const { getTodos, createTodo, updateTodo } = require('../api');
 
 import "babel-polyfill";
 
@@ -27,8 +27,8 @@ describe('Todo Api', () => {
             const expectedResponse = [{ "_id": "62234346c2a65768f2c03ca5", "status": 0, "text": "drink water" }, { "_id": "6225bfaec2a65768f2c03ca6", "status": 0, "text": "bla bla" }]
 
             provider.addInteraction({
-                state: "there are 2 todos",
-                uponReceiving: 'a request for todos',
+                state: "there are already exists todos",
+                uponReceiving: 'request for geting todos',
                 withRequest: {
                     path: '/GetTodoElements',
                     method: 'GET',
@@ -50,14 +50,14 @@ describe('Todo Api', () => {
         })
     })
 
-    describe("Create todo", () => {
+    describe("Create a todo", () => {
         it('Should add an element to todo list', async () => {
     
             const requestBody =
                 {"status": 0, "text": "new todo element" }
     
             provider.addInteraction({
-                state: "a todo item created",
+                state: "a todo item is created",
                 uponReceiving: "create item request",
                 withRequest: {
                     method: "POST",
@@ -80,5 +80,35 @@ describe('Todo Api', () => {
             expect(myJSON).toEqual( "\"Created \"");
         })
     })
+
+    describe("Update a todo item", () => {
+        const requestBody = {"_id": "62234346c2a65768f2c03ca5", "status": 0, "text": "drink water"}
+
+        it("Should update the todo item", async() => {
+            provider.addInteraction({
+                state: 'Update a todo item',
+                uponReceiving: 'a request to update the todo item',
+                withRequest: {
+                    method: 'PUT',
+                    path: `/UpdateTodo`,
+                    headers: {
+                    'Accept': 'application/json; charset=utf-8',
+                    'Content-Type': 'application/json; charset=UTF-8'
+                    }
+                },
+                willRespondWith: {
+                    status: 200,
+                    headers: {
+                        'Content-Type': 'application/json; charset=UTF-8'
+                    },
+                    body: expectedResponse
+                }
+            })
+            const response = await updateTodo(baseURL, id);
+            //console.log(response.data);
+            expect(response.data).toEqual(expectedResponse);
+        })
+    })
+
 })
 

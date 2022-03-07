@@ -24,14 +24,15 @@ export async function createTodo(baseURL, todoElement){
     })
 }
 
-export async function updateTodo(baseURL){
+export async function updateTodo(baseURL, todoElement){
     return axios.request({
         method: "PUT",
         url: baseURL + `/UpdateTodo`,
         headers: {
             'Accept': 'application/json; charset=utf-8',
             'Content-type': 'application/json; charset=UTF-8',
-        }
+        },
+        data: todoElement
     })
 }
 
