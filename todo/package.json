@@ -8,7 +8,8 @@
         "test:unit": "vue-cli-service test:unit tests/unit",
         "lint": "vue-cli-service lint",
         "test": "./node_modules/.bin/cucumber-js ./src --require ./src/steps/todo.js",
-        "test:consumer": "jest tests/contract"
+        "test:consumer": "jest tests/contract",
+        "pact:publish": "pact-broker publish pacts/todo-todo-backend.json --consumer-app-version='$(npx @pact-foundation/absolute-version)' --auto-detect-version-properties --broker-base-url=https://aykut.pactflow.io/ --broker-token=9rCrv_BBppRPFIroVB7UKQ"
     },
     "dependencies": {
         "@cucumber/cucumber": "^7.3.2",

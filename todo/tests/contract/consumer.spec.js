@@ -1,6 +1,6 @@
 const { Pact } = require('@pact-foundation/pact')
 const { getTodos, createTodo, updateTodo, deleteTodo } = require('../api');
-
+import { like } from "@pact-foundation/pact/src/dsl/matchers";
 import "babel-polyfill";
 
 
@@ -32,13 +32,13 @@ describe('Todo Api', () => {
                 withRequest: {
                     path: '/GetTodoElements',
                     method: 'GET',
-                    headers: { 'Accept': 'application/json; charset=utf-8' }
+                    headers: { 'Accept': 'application/json' }
                 },
                 willRespondWith: {
                     status: 200,
-                    body: expectedResponse,
+                    body: like(expectedResponse),
                     headers: {
-                        'Content-Type': 'application/json; charset=UTF-8'
+                        'Content-Type': 'application/json'
                     },
                 }
             })
@@ -62,20 +62,20 @@ describe('Todo Api', () => {
                     method: "POST",
                     path: "/CreateTodo",
                     headers: {
-                        'Accept': 'application/json; charset=utf-8',
-                        'Content-Type': 'application/json; charset=UTF-8'
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
                     },
-                    body: requestBody
+                    body: like(requestBody)
                 },
                 willRespondWith: {
                     status: 201,
                     headers: {
-                        'Content-Type': 'application/json; charset=UTF-8'
+                        'Content-Type': 'application/json'
                     },
                 }
             })
-            let response = await createTodo(baseURL, requestBody);
-            //console.log(response);
+            let response = await createTodo(baseURL, like(requestBody));
+            console.log(response);
             const myJSON = JSON.stringify(response.statusText);
             expect(myJSON).toEqual("\"Created \"");
         })
@@ -92,15 +92,15 @@ describe('Todo Api', () => {
                     method: 'PUT',
                     path: `/UpdateTodo`,
                     headers: {
-                        'Accept': 'application/json; charset=utf-8',
-                        'Content-Type': 'application/json; charset=UTF-8'
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
                     },
-                    body: requestBody
+                    body: like(requestBody)
                 },
                 willRespondWith: {
                     status: 200,
                     headers: {
-                        'Content-Type': 'application/json; charset=UTF-8'
+                        'Content-Type': 'application/json'
                     },
 
 
@@ -126,13 +126,13 @@ describe('Todo Api', () => {
                 withRequest: {
                     method: 'PUT',
                     path: `/DeleteTodo/${id}`,
-                    headers: { 'Accept': 'application/json; charset=utf-8' }
+                    headers: { 'Accept': 'application/json' }
 
                 },
                 willRespondWith: {
                     status: 200,
                     headers: {
-                        'Content-Type': 'application/json; charset=UTF-8'
+                        'Content-Type': 'application/json'
                     },
 
 
